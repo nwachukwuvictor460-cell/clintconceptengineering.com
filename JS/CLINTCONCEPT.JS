@@ -683,3 +683,153 @@ projectFilters.forEach((filter) => {
     });
 
 });
+
+/* =========================================================
+   TESTIMONIAL SLIDER
+========================================================= */
+
+const testimonials =
+    document.querySelectorAll(".testimonial");
+
+const nextTestimonial =
+    document.querySelector(".testimonial-next");
+
+const previousTestimonial =
+    document.querySelector(".testimonial-prev");
+
+const testimonialCurrent =
+    document.querySelector(".testimonial-current");
+
+
+let testimonialIndex = 0;
+
+
+function showTestimonial(index) {
+
+    testimonials.forEach((testimonial) => {
+
+        testimonial.classList.remove("active");
+
+    });
+
+
+    testimonials[index].classList.add("active");
+
+
+    testimonialCurrent.textContent =
+        String(index + 1).padStart(2, "0");
+
+}
+
+
+/* NEXT */
+
+nextTestimonial.addEventListener("click", () => {
+
+    testimonialIndex++;
+
+    if (testimonialIndex >= testimonials.length) {
+
+        testimonialIndex = 0;
+
+    }
+
+    showTestimonial(testimonialIndex);
+
+});
+
+
+/* PREVIOUS */
+
+previousTestimonial.addEventListener("click", () => {
+
+    testimonialIndex--;
+
+    if (testimonialIndex < 0) {
+
+        testimonialIndex =
+            testimonials.length - 1;
+
+    }
+
+    showTestimonial(testimonialIndex);
+
+});
+
+/* =========================================================
+   PROJECT ENQUIRY FORM
+========================================================= */
+
+const projectForm =
+    document.getElementById("projectForm");
+
+
+if (projectForm) {
+
+    projectForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        /* GET FORM VALUES */
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const service =
+            document.getElementById("service").value;
+
+        const location =
+            document.getElementById("location").value.trim();
+
+        const message =
+            document.getElementById("message").value.trim();
+
+
+        /* CREATE WHATSAPP MESSAGE */
+
+        const whatsappMessage =
+
+`Hello Clint Concept Engineering,
+
+I would like to make a project enquiry.
+
+Name: ${name}
+
+Phone: ${phone}
+
+Email: ${email || "Not provided"}
+
+Service Required: ${service}
+
+Project Location: ${location || "Not provided"}
+
+Project Details:
+${message}
+
+Thank you.`;
+
+
+        /* WHATSAPP URL */
+
+        const whatsappURL =
+            "https://wa.me/2349028824416?text=" +
+            encodeURIComponent(whatsappMessage);
+
+
+        /* OPEN WHATSAPP */
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    });
+
+}
