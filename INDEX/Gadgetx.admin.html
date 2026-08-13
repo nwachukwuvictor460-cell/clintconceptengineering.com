@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./shopbuddy-enhanced.css" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>ShopBuddy</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <a href="#" class="brand" aria-label="ShopBuddy home">
+          <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 25 35 L 30 20 Q 30 15 35 15 L 65 15 Q 70 15 70 20 L 75 35 Z" fill="none" stroke="#6b3e11" stroke-width="2" />
+            <path d="M 25 35 L 75 35 L 70 85 Q 70 90 65 90 L 35 90 Q 30 90 30 85 Z" fill="#6b3e11" />
+            <path d="M 35 35 Q 35 15 50 10 Q 65 15 65 35" fill="none" stroke="#c89b2f" stroke-width="2.5" />
+            <circle cx="50" cy="55" r="8" fill="#fffdfa" opacity="0.95" />
+            <text x="50" y="60" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b3e11">✓</text>
+          </svg>
+          <span>ShopBuddy</span>
+        </a>
+
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a>
+          <a href="#products" class="nav-link"><i class="fas fa-laptop"></i> Gadgets</a>
+          <a href="#admin-dashboard" class="nav-link"><i class="fas fa-chart-bar"></i> Admin</a>
+          <a href="#assistant" class="nav-link"><i class="fas fa-robot"></i> Assistant</a>
+          <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+
+          <div class="search-container">
+            <input type="text" placeholder="Search gadgets, brands..." />
+            <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+          </div>
+
+          <div class="header-actions">
+            <button class="nav-btn-1" aria-label="AI Assistant"><i class="fas fa-robot"></i></button>
+            <button class="nav-btn-2" aria-label="Wishlist"><i class="fas fa-heart"></i></button>
+            <div class="cart-container">
+              <button class="nav-btn-3" aria-label="Shopping Cart"><i class="fas fa-shopping-cart"></i></button>
+              <span class="cart-count">2</span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="admin-wrapper" id="admin-dashboard">
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo">ShopBuddy <span>Admin Control</span></div>
+    <nav class="admin-nav">
+      <a href="#admin-dashboard" class="admin-nav-link active">
+        <i class="fa-solid fa-gauge"></i> Dashboard
+      </a>
+      <a href="#products" class="admin-nav-link">
+        <i class="fa-solid fa-box"></i> Products
+      </a>
+      <a href="#admin-dashboard" class="admin-nav-link">
+        <i class="fa-solid fa-receipt"></i> Orders
+      </a>
+      <!-- <a href="#contact" class="admin-nav-link">
+        <i class="fa-solid fa-store"></i> Support
+      </a>
+      <a href="#contact" class="admin-nav-link">
+        <i class="fa-solid fa-users"></i> Customers -->
+      </a>
+      <a href="#home" class="admin-nav-link admin-logout">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="admin-main">
+
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <h1>Dashboard Overview</h1>
+      <div class="admin-profile">
+        <img src="https://i.pravatar.cc/40?img=8" alt="Admin avatar">
+        <span>Emeka O.</span>
+      </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-blue">
+          <i class="fa-solid fa-box"></i>
+        </div>
+        <div class="stat-info">
+          <h3>248</h3>
+          <p>Total Products</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-green">
+          <i class="fa-solid fa-receipt"></i>
+        </div>
+        <div class="stat-info">
+          <h3>1,024</h3>
+          <p>Total Orders</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-purple">
+          <i class="fa-solid fa-store"></i>
+        </div>
+        <div class="stat-info">
+          <h3>36</h3>
+          <p>Active Vendors</p>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon stat-icon-yellow">
+          <i class="fa-solid fa-naira-sign"></i>
+        </div>
+        <div class="stat-info">
+          <h3>₦4.2M</h3>
+          <p>Total Revenue</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Two column row: recent orders + low stock -->
+    <div class="dashboard-columns">
+
+      <!-- Recent Orders -->
+      <div class="dashboard-panel">
+        <h2 class="panel-title">Recent Orders</h2>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#SB1042</td>
+              <td>Chidinma A.</td>
+              <td>₦185,000</td>
+              <td><span class="status-badge status-active">Delivered</span></td>
+            </tr>
+            <tr>
+              <td>#SB1041</td>
+              <td>Emeka O.</td>
+              <td>₦320,000</td>
+              <td><span class="status-badge status-low">Pending</span></td>
+            </tr>
+            <tr>
+              <td>#SB1040</td>
+              <td>Ngozi B.</td>
+              <td>₦65,000</td>
+              <td><span class="status-badge status-active">Delivered</span></td>
+            </tr>
+            <tr>
+              <td>#SB1039</td>
+              <td>Tunde K.</td>
+              <td>₦210,000</td>
+              <td><span class="status-badge status-out">Cancelled</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Low Stock Alerts -->
+      <div class="dashboard-panel">
+        <h2 class="panel-title">Low Stock Alerts</h2>
+        <ul class="low-stock-list">
+          <li>
+            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=60" alt="iPhone 13">
+            <div>
+              <h4>iPhone 13</h4>
+              <span>Only 5 left</span>
+            </div>
+          </li>
+          <li>
+            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=60" alt="Infinix Note 40">
+            <div>
+              <h4>Infinix Note 40</h4>
+              <span>Out of stock</span>
+            </div>
+          </li>
+          <li>
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=60" alt="Samsung Galaxy A55">
+            <div>
+              <h4>Samsung Galaxy A55</h4>
+              <span>Only 8 left</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </main>
+</section>
+
+    <main>
+      <section class="hero-container" id="home">
+        <div class="hero-copy">
+          <span class="eyebrow">Smart shopping, curated for you</span>
+          <h1>Upgrade your tech life with calm confidence.</h1>
+          <p>
+            Discover premium gadgets, compare the best deals, and let your personal assistant guide every purchase from inspiration to checkout.
+          </p>
+          <div class="hero-actions">
+            <a href="#products" class="cta-button">Start Shopping</a>
+            <a href="#admin-dashboard" class="ghost-button">Open Admin Dashboard</a>
+            <a href="#assistant" class="ghost-button">Meet the Assistant</a>
+          </div>
+          <div class="hero-points">
+            <span><i class="fas fa-shield-alt"></i> 2-year warranty</span>
+            <span><i class="fas fa-bolt"></i> Fast delivery</span>
+            <span><i class="fas fa-star"></i> Top-rated picks</span>
+            <details class="about-toggle" id="aboutSection">
+  <summary class="about-toggle-btn">
+    Learn More About Us
+    
+  </summary>
+
+  <div class="about-container">
+
+    <!-- Image side -->
+    <div class="about-image">
+      
+
+    <!-- Text side -->
+    <div class="about-content">
+      <span class="about-label">About Us</span>
+      <h2 class="section-title">Why ShopBuddy?</h2>
+      <p class="about-text">
+       ShopBuddy is an E-commerce website that specialise on all electronic gadgets, such as; phones, laptops, tablets, and accessories. We are committed to providing a seamless shopping experience with a focus on quality, affordability, and customer satisfaction. It is meant in a way that it is user friendly, through the aid of our AI assistant which helps you find the best products that suit your needs and budget and gives you information and specifications of the gadgets you have in mind. We are located at St. Micheals GSM Center Aba, Abia State, Nigeria. We are open from 9:00 AM to 6:00 PM, Monday to Saturday. Enjoy a hassle-free shopping experience with ShopBuddy, where your tech needs are our priority. 
+      </p>
+      <p class="about-text">
+        From smartphones to laptops and accessories, every product on 
+        ShopBuddy is sourced from trusted brands and vetted before it 
+        reaches you.
+      </p>
+
+      <!-- Stats row -->
+      <div class="about-stats">
+        <div class="stat-item">
+          <h3>5,000+</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+          <h3>1,200+</h3>
+          <p>Products Sold</p>
+        </div>
+        <div class="stat-item">
+          <h3>24/7</h3>
+          <p>Customer Support</p>
+        </div>
+      </div>
+
+      <a href="shop.html" class="btn-primary">Start Shopping</a>
+    </div>
+
+  </div>
+ 
+  
+</details>
+
+
+          </div>
+        </div>
+
+        
+
+        
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orb"></div>
+          <div class="floating-cards">
+            <div class="card floating-laptop">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&q=80" alt="Laptop" />
+            </div>
+            <div class="card floating-phone">
+              <img src="https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400&q=80" alt="Phone" />
+            </div>
+            <div class="card floating-watch">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Watch" />
+            </div>
+            <div class="card floating-speaker">
+              <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80" alt="Speaker" />
+            </div>
+          </div>
+        </div>
+      </section>
+<!--LOGIN PAGE-->
+      <section class="sign-in-section">
+        <button class="sign-in-trigger" type="button" id="openSignInModal">
+          <i class="fas fa-user-lock"></i>
+          <span>Sign In</span>
+        </button>
+      </section>
+
+      <div class="modal-overlay" id="signInModal" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+          <button class="modal-close" id="closeSignInModal" type="button" aria-label="Close sign in form">&times;</button>
+          <div class="sign-in">
+            <h4 id="signInTitle">Account Login</h4>
+            <form action="/login-endpoint" method="POST">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="username">
+              </div>
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+              <button type="submit" class="login-btn">Login In</button>
+            </form>
+            <div class="form-footer">
+              <p><a href="#">Forget Password?</a></p>
+              <p>Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="feature-strip" aria-label="Key benefits">
+        <article class="feature-card">
+          <i class="fas fa-magic"></i>
+          <h3>Curated picks</h3>
+          <p>Handpicked gadgets for work, play, and everyday life.</p>
+        </article>
+        <article class="feature-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Smart price tracking</h3>
+          <p>Stay ahead of promotions and discover the best moments to buy.</p>
+        </article>
+        <article class="feature-card">
+          <i class="fas fa-headset"></i>
+          <h3>Support that feels personal</h3>
+          <p>Friendly assistance, quick answers, and seamless checkout.</p>
+        </article>
+      </section>
+    <section class="products-section" id="products">
+      <div class="section-heading">
+        <h2>Our Gadgets</h2>
+        <p>Browse high-performing essentials, filtered to match your style, budget, and needs.</p>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filters">
+        <input
+          type="text"
+          id="searchFilter"
+          placeholder="🔍 Search by name..."
+        />
+
+        <input type="number" id="minPrice" placeholder="₦ Min price" />
+        <input type="number" id="maxPrice" placeholder="₦ Max price" />
+
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option value="phones">📱 Phones</option>
+          <option value="laptops">💻 Laptops</option>
+          <option value="accessories">🎧 Accessories</option>
+          <option value="tablets">📟 Tablets</option>
+        </select>
+
+        <select id="brandFilter">
+          <option value="">All Brands</option>
+          <option value="samsung">Samsung</option>
+          <option value="apple">Apple</option>
+          <option value="tecno">Tecno</option>
+          <option value="infinix">Infinix</option>
+          <option value="hp">HP</option>
+          <option value="dell">Dell</option>
+          <option value="lenovo">Lenovo</option>
+          <option value="oraimo">Oraimo</option>
+          <option value="anker">Anker</option>
+          <option value="baseus">Baseus</option>
+          <option value="xiaomi">Xiaomi</option>
+        </select>
+
+        <select id="ratingFilter">
+          <option value="">⭐ All Ratings</option>
+          <option value="4">4 stars & above</option>
+          <option value="3">3 stars & above</option>
+        </select>
+
+        <label>
+          <input type="checkbox" id="dealsFilter" /> 🔥 Deals only
+        </label>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div class="products-grid" id="productsGrid">
+        <!-- ===== PHONES ===== -->
+        <div
+          class="product-card"
+          data-category="phones"
+          data-brand="samsung"
+          data-rating="5"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/phone-placeholder.svg" alt="Samsung Galaxy S24" />
+          <div class="card-body">
+            <span class="product-category">📱 Phones</span>
+            <h3 class="product-name">Samsung Galaxy S24</h3>
+            <p class="product-price">₦850,000</p>
+            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="phones"
+          data-brand="apple"
+          data-rating="5"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/phone-placeholder.svg" alt="iPhone 15 Pro" />
+          <div class="card-body">
+            <span class="product-category">📱 Phones</span>
+            <h3 class="product-name">iPhone 15 Pro</h3>
+            <p class="product-price">₦1,200,000</p>
+            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="phones"
+          data-brand="tecno"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/phone-placeholder.svg" alt="Tecno Camon 20" />
+          <div class="card-body">
+            <span class="product-category">📱 Phones</span>
+            <h3 class="product-name">Tecno Camon 20</h3>
+            <p class="product-price">₦180,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="phones"
+          data-brand="infinix"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/phone-placeholder.svg" alt="Infinix Hot 30" />
+          <div class="card-body">
+            <span class="product-category">📱 Phones</span>
+            <h3 class="product-name">Infinix Hot 30</h3>
+            <p class="product-price">₦120,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status limited">🚀 Limited Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <!-- ===== LAPTOPS ===== -->
+        <div
+          class="product-card"
+          data-category="laptops"
+          data-brand="apple"
+          data-rating="5"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/laptop-placeholder.svg" alt="MacBook Pro M3" />
+          <div class="card-body">
+            <span class="product-category">💻 Laptops</span>
+            <h3 class="product-name">MacBook Pro M3</h3>
+            <p class="product-price">₦2,400,000</p>
+            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+            <span class="stock-status limited">🚀 Limited Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="laptops"
+          data-brand="hp"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/laptop-placeholder.svg" alt="HP Pavilion 15" />
+          <div class="card-body">
+            <span class="product-category">💻 Laptops</span>
+            <h3 class="product-name">HP Pavilion 15</h3>
+            <p class="product-price">₦650,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="laptops"
+          data-brand="dell"
+          data-rating="4"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/laptop-placeholder.svg" alt="Dell XPS 13" />
+          <div class="card-body">
+            <span class="product-category">💻 Laptops</span>
+            <h3 class="product-name">Dell XPS 13</h3>
+            <p class="product-price">₦1,100,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="laptops"
+          data-brand="lenovo"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/laptop-placeholder.svg" alt="Lenovo ThinkPad E14" />
+          <div class="card-body">
+            <span class="product-category">💻 Laptops</span>
+            <h3 class="product-name">Lenovo ThinkPad E14</h3>
+            <p class="product-price">₦720,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+
+        <!-- ===== ACCESSORIES ===== -->
+        <div
+          class="product-card"
+          data-category="accessories"
+          data-brand="oraimo"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/accessory-placeholder.svg" alt="Oraimo FreePods 4" />
+          <div class="card-body">
+            <span class="product-category">🎧 Accessories</span>
+            <h3 class="product-name">Oraimo FreePods 4</h3>
+            <p class="product-price">₦18,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="accessories"
+          data-brand="anker"
+          data-rating="5"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/accessory-placeholder.svg" alt="Anker 65W Charger" />
+          <div class="card-body">
+            <span class="product-category">🎧 Accessories</span>
+            <h3 class="product-name">Anker 65W Charger</h3>
+            <p class="product-price">₦22,000</p>
+            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="accessories"
+          data-brand="baseus"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img
+            src="images/accessory-placeholder.svg"
+            alt="Baseus Power Bank 20000mAh"
+          />
+          <div class="card-body">
+            <span class="product-category">🎧 Accessories</span>
+            <h3 class="product-name">Baseus Power Bank 20000mAh</h3>
+            <p class="product-price">₦35,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="accessories"
+          data-brand="xiaomi"
+          data-rating="4"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/accessory-placeholder.svg" alt="Xiaomi Smart Band 8" />
+          <div class="card-body">
+            <span class="product-category">🎧 Accessories</span>
+            <h3 class="product-name">Xiaomi Smart Band 8</h3>
+            <p class="product-price">₦28,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <!-- ===== TABLETS ===== -->
+        <div
+          class="product-card"
+          data-category="tablets"
+          data-brand="apple"
+          data-rating="5"
+          data-deal="false"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/tablet-placeholder.svg" alt="iPad Pro M2" />
+          <div class="card-body">
+            <span class="product-category">📟 Tablets</span>
+            <h3 class="product-name">iPad Pro M2</h3-
+            <p class="product-price">₦1,500,000</p>
+            <div class="product-rating">⭐⭐⭐⭐⭐</div>
+            <span class="stock-status limited">🚀 Limited Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="tablets"
+          data-brand="samsung"
+          data-rating="4"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/tablet-placeholder.svg" alt="Samsung Galaxy Tab S9" />
+          <div class="card-body">
+            <span class="product-category">📟 Tablets</span>
+            <h3 class="product-name">Samsung Galaxy Tab S9</h3>
+            <p class="product-price">₦980,000</p>
+            <div class="product-rating">⭐⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+
+        <div
+          class="product-card"
+          data-category="tablets"
+          data-brand="infinix"
+          data-rating="3"
+          data-deal="true"
+        >
+          <button class="wishlist-btn">❤️</button>
+          <img src="images/tablet-placeholder.svg" alt="Infinix XPad" />
+          <div class="card-body">
+            <span class="product-category">📟 Tablets</span>
+            <h3 class="product-name">Infinix XPad</h3>
+            <p class="product-price">₦150,000</p>
+            <div class="product-rating">⭐⭐⭐</div>
+            <span class="stock-status in-stock">✅ In Stock</span>
+            <button class="add-to-cart-btn">Add to Cart 🛒</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!---TESTIMONIALS SECTION--->
+
+    <section class="testimonials" id="testimonialsSection">
+  <div class="testimonials-header">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-subtitle">Real feedback from real ShopBuddy shoppers</p>
+  </div>
+
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testimonial-text">
+        "I ordered a laptop and it arrived in two days. Packaging was solid 
+        and the price was way better than what I saw elsewhere. Definitely 
+        shopping here again."
+      </p>
+      <div class="testimonial-author">
+        <img src="https://i.pravatar.cc/60?img=12" alt="Customer" class="testimonial-avatar">
+        <div class="testimonial-info">
+          <h4>Victor C.</h4>
+          <span>Lagos, Nigeria</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half-stroke"></i>
+      </div>
+      <p class="testimonial-text">
+        "Customer support actually responded fast when I had a question 
+        about my order. That alone earned my trust. Will be back for my 
+        next phone upgrade."
+      </p>
+      <div class="testimonial-author">
+        <img src="https://i.pravatar.cc/60?img=32" alt="Customer" class="testimonial-avatar">
+        <div class="testimonial-info">
+          <h4>Emeka O.</h4>
+          <span>Port Harcourt, Nigeria</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </div>
+      <p class="testimonial-text">
+        "Clean site, easy checkout, and the dark mode is a nice touch. 
+        Found exactly the earbuds I wanted at a good price."
+      </p>
+      <div class="testimonial-author">
+        <img src="https://i.pravatar.cc/60?img=47" alt="Customer" class="testimonial-avatar">
+        <div class="testimonial-info">
+          <h4>Ngozi B.</h4>
+          <span>Abuja, Nigeria</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!---HERO BANNER SECTION--->
+    <section class="assistant-section" id="assistant">
+      <div class="assistant-card">
+        <div class="assistant-copy">
+          <div class="assistant-heading-row">
+            <div>
+              <span class="assistant-badge">New</span>
+              <h2>Meet your Shopping Sidekick</h2>
+            </div>
+            <img src="images/robot-assistant.svg" alt="ShopBuddy AI robot" class="assistant-inline-image" />
+          </div>
+          <p>Ask for a phone under your budget, compare laptops for editing, or discover accessories that fit your setup.</p>
+          <div class="assistant-list">
+            <span>Find a phone under 800k</span>
+            <span>Best laptop for editing</span>
+            <span>Noise-cancelling earbuds</span>
+            <span>And other electronic Gadgets you need</span>
+          </div>
+        </div>
+        <div class="assistant-visual">
+          <div class="assistant-window">
+            <p><strong>ShopBuddy AI</strong></p>
+            <p>“Your perfect match is ready. Want me to shortlist the top 3?”</p>
+            <span class="tag-pill">Personalized recommendations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+
+   <!-- CONTACT SECTION-->
+    <section class="contact-section" id="contact">
+      <h2>Contact Us📞</h2>
+      <p>Reach us through our social media handle or send us a message through the form</p>
+      <div class="contact-container">
+        <div class="contact-info">
+          
+          <div class="contact-details">
+            <strong>Call Us Directly</strong>
+            <div class="phone-button-container">
+              <!--admin phone button-->
+              <a href="tel: +2348022388754" class="phone-btn">
+              <i class="fas fa-user-shield"></i>
+              <span>Admin: +234 8022388754</span>
+            </a>
+
+            <!--customer care phone button-->
+            <a href="tel: +2347082043079" class="phone-btn">
+            <i class="fas fa-handset"></i>
+            <span>Customer care: +234 7028043079</span>
+            </a>
+            </div>
+
+            <!--email link-->
+            <strong>Email Address</strong>
+            <a class="email-link" href="mailto:nwachukwuvictor460@gmail.com">nwachukwuvictor460@gmail.com</a>
+            </div>
+
+            <!--social media pannel-->
+            <div class="social-heading"><strong>Follow & chat with Us</strong></div>
+            <div class="social-icons">
+              <!--Whatsapp(open chat immediately)-->
+              <a href="https://wa.me/2348022388754" target="_blank" class="social-btn whatsapp" title="chat on whatsapp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <!--Instagram-->
+              <a href="https://instagram.com" target="_blank" class="social-btn instagram" title="Follow on Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <!--tiktok-->
+              <a href="https://tiktok.com" target="_blank" class="social-btn tiktok" title="Follow us on Tiktok">
+                <i class="fab fa-tiktok"></i>
+              </a>
+
+              <a href="https://facebook.com" target="_blank" class="social-btn facebook" title="Follow us on Facebook">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </div>
+
+           
+
+              </div>
+
+            </div>
+            
+
+          </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="faq" id="faqSection">
+  <div class="faq-header">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Got questions? We've got answers.</p>
+  </div>
+
+  <div class="faq-list">
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        How long does delivery take?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </summary>
+      <div class="faq-answer">
+        <p>Delivery within South eastern states usually takes 1-2 business days. Other states across Nigeria take 3-5 business days depending on location.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        What payment methods do you accept?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </summary>
+      <div class="faq-answer">
+        <p>We accept debit/credit cards, bank transfers, and payment on delivery in select locations.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        Can I return a product if I'm not satisfied?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </summary>
+      <div class="faq-answer">
+        <p>Yes. We offer a 7-day return window for most items, as long as the product is unused and in its original packaging.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        Do your gadgets come with a warranty?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </summary>
+      <div class="faq-answer">
+        <p>Most gadgets come with a manufacturer warranty of 6-12 months, depending on the brand and product type.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-question">
+        How do I track my order?
+        <i class="fa-solid fa-chevron-down faq-icon"></i>
+      </summary>
+      <div class="faq-answer">
+        <p>Once your order ships, you'll receive a tracking link via email or SMS to monitor its progress.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+    <!---FOOTERS QUICK LINKS AND CONTACT INFO-->
+    <footer class="footer">
+  <div class="footer-container">
+    <!-- Column 1: Brand + About -->
+    <div class="footer-col footer-brand">
+      <h3 class="footer-logo">ShopBuddy</h3>
+      <p class="footer-about">
+        Your trusted spot for the latest gadgets — phones, laptops, accessories 
+        and more, delivered fast across Nigeria.
+      </p>
+    
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Shop</a></li>
+        <li><a href="#aboutSection">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#faqSection">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact Info -->
+    <div class="footer-col">
+      <h4 class="footer-heading">Contact Us</h4>
+      <ul class="footer-contact">
+        <li><i class="fa-solid fa-location-dot"></i> No. 36 St. Micheals GSM Center, Aba Abia State</li>
+        <li><i class="fa-solid fa-phone"></i> +234 802 238 8754</li>
+        <li><i class="fa-solid fa-envelope"></i> nwachukwuvictor460@gmail.com</li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Newsletter -->
+    <div class="footer-col footer-newsletter">
+      <h4 class="footer-heading">Stay Updated</h4>
+      <p>Get deals and new gadget drops in your inbox.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> ShopBuddy. All rights reserved.</p>
+  </div>
+</footer>
+
+ 
+  
+  </body>
+        
+</html>
+<script src="./shopBuddy.js"></script>

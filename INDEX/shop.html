@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop All Gadgets — GadgetX</title>
+  <meta name="description" content="Browse all phones, tablets, PS5, earbuds, smart glasses, MP3 players & chargers. Filter by category, price and brand.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+  <div data-header></div>
+
+  <div class="container">
+    <div class="crumbs">
+      <a href="home.html">Home</a><span>›</span><span id="crumbCat">Shop</span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="shop-layout">
+      <aside class="filters">
+        <h4>Category</h4>
+        <div class="filters__group" id="filterCats"></div>
+
+        <h4>Price (₦)</h4>
+        <div class="filters__group">
+          <div class="price-row">
+            <input type="number" id="priceMin" placeholder="Min" min="0">
+            <input type="number" id="priceMax" placeholder="Max" min="0">
+          </div>
+        </div>
+
+        <h4>Brand</h4>
+        <div class="filters__group" id="filterBrands"></div>
+
+        <button class="btn btn--outline btn--sm" id="clearFilters" style="width:100%"><i class="fas fa-rotate"></i> Clear filters</button>
+      </aside>
+
+      <div>
+        <div class="shop-toolbar">
+          <div id="resultCount" class="muted"></div>
+          <div>
+            <label for="sortSelect" class="muted" style="font-size:0.85rem;margin-right:8px">Sort:</label>
+            <select id="sortSelect">
+              <option value="popular">Popular</option>
+              <option value="newest">Newest</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-grid" id="shopGrid"></div>
+        <div style="text-align:center;margin-top:32px">
+          <button class="btn btn--outline" id="loadMore" style="display:none">Load more</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:64px"></div>
+  <div data-footer></div>
+
+  <script src="../JS/products.js"></script>
+  <script src="../JS/auth.js"></script>
+  <script src="../JS/cart.js"></script>
+  <script src="../main.js"></script>
+  <script src="../JS/chatbot.js"></script>
+  <script src="../JS/shop.js"></script>
+</body>
+</html>

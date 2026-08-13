@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GadgetX — Premium Gadgets, Nigeria</title>
+<meta name="description" content="GadgetX — phones, tablets, PS5, earbuds, smart glasses, MP3 players and chargers, delivered nationwide.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- Styles -->
+ <link rel="stylesheet" href="./GADGETX.html">
+<link rel="stylesheet" href="../CSS/GADGETX1.css">
+</head>
+<body>
+
+<!-- ============ TRUST BAR (site-wide, above nav) ============ -->
+<div class="trust-bar">
+  <div class="trust-bar__track container">
+    <span><i class="fa-solid fa-lock"></i> Secure Payment</span>
+    <span><i class="fa-solid fa-truck-fast"></i> Fast Delivery Nationwide</span>
+    <span><i class="fa-solid fa-shield-halved"></i> Warranty on All Gadgets</span>
+    <span><i class="fa-solid fa-headset"></i> Support 7 Days a Week</span>
+  </div>
+</div>
+
+<!-- ============ MAIN NAV ============ -->
+<header class="site-header">
+  <div class="container navbar">
+    <a href="index.html" class="logo">Gadget<span>X</span></a>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>3
+
+    <nav>
+      
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-dropdown">
+          <button class="nav-trigger">Products <i class="fa-solid fa-chevron-down chev"></i></button>
+          <div class="dropdown-menu">
+            <a href="shop.html?category=phones">Phones</a>
+            <a href="shop.html?category=tablets">Tablets</a>
+            <a href="shop.html?category=gaming">Gaming / PS5</a>
+            <a href="shop.html?category=earbuds">Earbuds</a>
+            <a href="shop.html?category=glasses">Smart Glasses</a>
+            <a href="shop.html?category=mp3">MP3 Players</a>
+            <a href="shop.html?category=chargers">Chargers &amp; Accessories</a>
+          </div>
+        
+        </li>
+        <li><a href="index.home">Home</a></li>
+        <li><a href="shop.html">Shop All</a></li>
+        <li><a href="#">Deals</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="search-toggle" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge-count" data-wishlist-count style="display:none;">0</span>
+      </a>
+      <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge-count" data-cart-count style="display:none;">0</span>
+      </a>
+      <div class="account-area">
+        <button class="account-trigger">
+          <i class="fa-regular fa-user"></i><span>Login / Register</span>
+        </button>
+        <div class="account-menu"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SEARCH OVERLAY ============ -->
+<div class="search-overlay">
+  <div class="search-panel">
+    <input type="text" placeholder="Search for a product — e.g. earbuds, PS5, charger...">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">New Arrivals</span>
+      <h1>Gadgets worth the upgrade.</h1>
+      <p>Genuine phones, tablets, gaming consoles and accessories — sourced, tested, and delivered nationwide with warranty on every order.</p>
+      <div class="hero-actions">
+        <a href="shop.html" class="btn btn-primary">Shop All Gadgets</a>
+        <a href="shop.html?category=phones" class="btn btn-outline">Browse Phones</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1592286927505-1def25115481?w=900" alt="Aurora X14 Pro smartphone">
+      <div class="hero-price-tag">Aurora X14 Pro — from ₦780,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORY TILES ============ -->
+<section class="section container">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Browse</span>
+      <h2>Shop by Category</h2>
+    </div>
+  </div>
+  <div class="category-grid"></div>
+</section>
+
+<!-- ============ FEATURED PRODUCTS ============ -->
+<section class="section container">
+  <div class="section-head">
+    <div>
+      /
+      <span class="eyebrow">Handpicked</span>
+      <h2>Featured Products</h2>
+    </div>
+    <a href="shop.html" class="view-all">View all products →</a>
+  </div>
+  <div class="product-grid" data-featured></div>
+</section>
+
+<!-- ============ TRUST BADGES ============ -->
+ 
+<div class="badges-strip">
+  <div class="container badges-inner">
+    <div class="badge-item">
+      <span class="b-icon"><i class="fa-solid fa-lock"></i></span>
+      <span class="b-text">Secure Payment<small>Bank transfer with receipt verification</small></span>
+    </div>
+    <div class="badge-item">
+      <span class="b-icon"><i class="fa-solid fa-truck-fast"></i></span>
+      <span class="b-text">Nationwide Delivery<small>Lagos same-day, other states 2–5 days</small></span>
+    </div>
+    <div class="badge-item">
+      <span class="b-icon"><i class="fa-solid fa-shield-halved"></i></span>
+      <span class="b-text">Warranty Included<small>On every gadget, every order</small></span>
+    </div>
+    <div class="badge-item">
+      <span class="b-icon"><i class="fa-solid fa-rotate-left"></i></span>
+      <span class="b-text">Easy Returns<small>7-day return window</small></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="newsletter">
+  <div class="container newsletter-inner">
+    <div>
+      <h2>Get first access to new drops and deals.</h2>
+      <p>No spam — just restock alerts and price drops.</p>
+    </div>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit" class="btn btn-gold">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <a href="index.html" class="logo">Gadget<span style="color: var(--gold);">X</span></a>
+      <p>Genuine gadgets, sourced and delivered across Nigeria — with warranty and support on every order.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="shop.html?category=phones">Phones</a></li>
+        <li><a href="shop.html?category=gaming">Gaming / PS5</a></li>
+        <li><a href="shop.html?category=earbuds">Earbuds</a></li>
+        <li><a href="shop.html?category=accessories">Phone Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Track My Order</a></li>
+        <li><a href="#">Returns &amp; Refunds</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About GadgetX</a></li>
+        <li><a href="admin-login.html">Vendor / Admin Login</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <span>© 2026 GadgetX. All rights reserved.</span>
+    <span>Made in Nigeria 🇳🇬</span>
+  </div>
+</footer>
+
+<!-- ============ FLOATING BUTTONS ============ -->
+<a href="https://wa.me/2340000000000" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+<button class="chat-launcher" aria-label="Open AI Assistant">
+  <i class="fa-solid fa-comment-dots"></i>
+</button>
+
+<!-- ============ SCRIPTS ============ -->
+ <script src="../JS/GADGETX-STYLE.JS"></script>
+<script src="../JS/GADGETX-Product.js"></script>
+<script src="../JS/GADGETX-MAIN.JS"></script>
+</body>
+</html>

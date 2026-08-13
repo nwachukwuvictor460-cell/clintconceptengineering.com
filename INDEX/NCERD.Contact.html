@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | NCERD</title>
+  <meta name="description" content="Get in touch with NCERD at the University of Nigeria, Nsukka Campus, Enugu State.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/NCERD.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">NC</span>
+        NCERD
+      </a>
+      <nav class="nav-links">
+        <a href="../NCERD.Html">Home</a>
+        <a href="../NCERD.Html">About</a>
+        <a href="./NCERD.Research.html">Research</a>
+        <a href="./NCERD.Program.html">Programs</a>
+        <a href="./NCERD.News.html">News &amp; Events</a>
+        <a href="./NCERD.Contact.html" class="active">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h1>Get in Touch With NCERD</h1>
+        <p>We'd love to hear from you — whether it's a research collaboration, program enquiry, or general question.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid-2" style="align-items:flex-start;">
+
+        <!-- CONTACT INFO -->
+        <div>
+          <h2>Visit Us</h2>
+          <div class="card" style="margin-bottom:var(--space-md);">
+            <h3>📍 Location</h3>
+            <p>NCERD Complex, Nsukka Campus, University of Nigeria, Enugu State, South-East Nigeria.</p>
+          </div>
+          <div class="card" style="margin-bottom:var(--space-md);">
+            <h3>✈️ Nearest Airport</h3>
+            <p>Akanu Ibiam International Airport, Enugu — approximately 80km / 1 hour drive from Nsukka Campus.</p>
+          </div>
+          <div class="card">
+            <h3>🏛️ Supervisory Body</h3>
+            <p>Energy Commission of Nigeria (ECN), Abuja.</p>
+          </div>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div>
+          <h2>Send a Message</h2>
+          <form id="contact-form" class="card">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="How can we help?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <p id="form-status" class="form-status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="text-center" style="margin-bottom:var(--space-lg);">Find Us on the Map</h2>
+        <iframe
+          src="https://www.google.com/maps?q=University+of+Nigeria+Nsukka&output=embed"
+          width="100%" height="400" style="border:0; border-radius:var(--radius);"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>NCERD</h4>
+          <p style="color:#CFE0D6;">National Centre for Energy Research and Development, University of Nigeria, Nsukka Campus, Enugu State, Nigeria.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="about.html">About Us</a>
+          <a href="research.html">Research</a>
+          <a href="programs.html">Programs</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h4>Affiliated With</h4>
+          <a href="#">Energy Commission of Nigeria</a>
+          <a href="#">University of Nigeria, Nsukka</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 National Centre for Energy Research and Development (NCERD), UNN. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shopBuddy.js"></script>
+</body>
+</html>

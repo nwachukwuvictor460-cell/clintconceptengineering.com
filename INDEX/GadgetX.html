@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GadgetX</title>
+    <link rel="stylesheet" href="./CSS/GadgetX.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="brand-block">
+          <a href="./GadgetX.html" class="header-title-link">
+            <h1 class="header-title">GadgetX</h1>
+          </a>
+          <p class="header-subtitle">Your one-stop shop for the latest gadgets</p>
+        </div>
+
+        <label class="search-bar" aria-label="Search gadgets">
+          <input type="text" placeholder="Search for gadgets..." />
+          <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M20 20L16.65 16.65"></path>
+          </svg>
+        </label>
+
+        <nav class="headernav" aria-label="Top navigation">
+          <div class="help-dropdown">
+            <button class="help-btn" type="button">Help</button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Track Order</a></li>
+              <li><a href="#">Return Policy</a></li>
+              <li><a href="#">Rate Product</a></li>
+              
+            </ul>
+          </div>
+
+          <a href="#" class="login-btn">Login / Sign Up</a>
+
+          <a href="#" class="cart-icon" aria-label="Shopping cart">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <span class="hero-eyebrow">Featured This Week</span>
+            <h2 class="hero-title">The Tecno Camon 30 Pro is here.</h2>
+            <p class="hero-subtitle">
+              200MP camera. 5G ready. All-day battery. Everything you need in a flagship,
+              at a price that makes sense.
+            </p>
+            <div class="hero-actions">
+              <a href="#" class="btn-primary">Shop Now</a>
+              <a href="#" class="btn-secondary">View Specs</a>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <img src="./img11/tecno spark 50.webp" alt="Tecno Camon 30 Pro" />
+            <div class="spec-readout">
+              <div class="spec-row"><span>Display</span><span>6.78" AMOLED</span></div>
+              <div class="spec-row"><span>Camera</span><span>200MP</span></div>
+              <div class="spec-row"><span>Battery</span><span>5000mAh</span></div>
+              <div class="spec-row"><span>Price</span><span>₦450,000</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      <section class="brands">
+    <div class="brands-inner">
+      <h2 class="section-title">Shop by Brand</h2>
+
+      <div class="brands-strip">
+        <a href="#" class="brand-chip">
+          <img src="assets/images/brands/apple.png" alt="Apple">
+          <span>Apple</span>
+        </a>
+        <a href="#" class="brand-chip">
+          <img src="assets/images/brands/samsung.png" alt="Samsung">
+          <span>Samsung</span>2236
+        </a>
+        <a href="#" class="brand-chip">
+          <img src="assets/images/brands/tecno.png" alt="Tecno">
+          <span>Tecno</span>
+        </a>
+        <a href="#" class="brand-chip">
+          <img src="assets/images/brands/infinix.png" alt="Infinix">
+          <span>Infinix</span>
+        </a>
+        <a href="#" class="brand-chip">
+          <img src="assets/images/brands/xiaomi.png" alt="Xiaomi">
+          <span>Xiaomi</span>
+        </a>
+        <a href="#" class="brand-chip">
+          <img src="assets/images/brands/oraimo.png" alt="Oraimo">
+          <span>Oraimo</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== RECOMMENDED PRODUCTS ===== -->
+  <section class="recommended">
+    <div class="recommended-inner">
+      <h2 class="section-title">Recommended For You</h2>
+
+      <div class="recommended-grid">
+        <div class="product-card-static">
+          <span class="badge">-10%</span>
+          <img src="assets/images/products/iphone15.png" alt="iPhone 15">
+          <h4>iPhone 15</h4>
+          <p class="specs">128GB &middot; 6.1" OLED</p>
+          <p class="price">&#8358;850,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <span class="badge">New</span>
+          <img src="assets/images/products/camon30.png" alt="Camon 30 Pro">
+          <h4>Camon 30 Pro</h4>
+          <p class="specs">256GB &middot; 200MP</p>
+          <p class="price">&#8358;450,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <img src="assets/images/products/airpods.png" alt="AirPods Pro">
+          <h4>AirPods Pro 2</h4>
+          <p class="specs">ANC &middot; USB-C</p>
+          <p class="price">&#8358;220,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <span class="badge">-15%</span>
+          <img src="assets/images/products/galaxy-s24.png" alt="Galaxy S24 Ultra">
+          <h4>Galaxy S24 Ultra</h4>
+          <p class="specs">256GB &middot; 200MP</p>
+          <p class="price">&#8358;980,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <img src="assets/images/products/zealot-s51.png" alt="Zealot S51 Pro">
+          <h4>Zealot S51 Pro Speaker</h4>
+          <p class="specs">10W &middot; IPX6</p>
+          <p class="price">&#8358;32,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <span class="badge">New</span>
+          <img src="assets/images/products/meta-glasses.png" alt="Meta Smart Glasses">
+          <h4>Meta Ray-Ban Smart Glasses</h4>
+          <p class="specs">12MP &middot; Bluetooth 5.0</p>
+          <p class="price">&#8358;310,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <img src="assets/images/products/apple-watch9.png" alt="Apple Watch Series 9">
+          <h4>Apple Watch Series 9</h4>
+          <p class="specs">45mm &middot; ECG, SpO2</p>
+          <p class="price">&#8358;380,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card-static">
+          <img src="assets/images/products/note40.png" alt="Infinix Note 40 Pro">
+          <h4>Infinix Note 40 Pro</h4>
+          <p class="specs">256GB &middot; 108MP</p>
+          <p class="price">&#8358;320,000</p>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="logo">GadgetX</a>
+        <p class="footer-tagline">Premium gadgets, honest prices, fast delivery across Nigeria.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Twitter">X</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="shop.html">Shop All</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get notified when new gadgets and deals drop.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-msg" id="newsletter-msg"></p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 GadgetX. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== AI ASSISTANT WIDGET ===== -->
+  <div class="ai-overlay" id="ai-overlay" hidden>
+    <div class="ai-box">
+      <div class="ai-header">
+        <span>GadgetX Assistant</span>
+        <button id="ai-close-btn" aria-label="Close">&times;</button>
+      </div>
+      <div class="ai-messages" id="ai-messages">
+        <div class="ai-msg ai-msg-bot">
+          Hi! I can answer questions about specs, prices, and stock for any gadget on GadgetHub.
+          Try asking something like "What's the battery life of AirPods Pro?" or "Compare iPhone 15 and Galaxy S24."
+        </div>
+      </div>
+      <form class="ai-input-row" id="ai-form">
+        <input type="text" id="ai-input" placeholder="Ask about a gadget..." autocomplete="off">
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  </body>
+</html>
+<script src="./img11/GadgetX.js"></script>

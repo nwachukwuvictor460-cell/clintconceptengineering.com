@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | ShopBuddy</title>
+<link rel="stylesheet" href="../CSS/shopbuddy.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* ===== CHECKOUT DESIGN OVERRIDE - SHOPBUDDY THEME ===== */
+  :root {
+    --gold-main: #d4af37;
+    --gold-soft: #f5e7b8;
+    --gold-cream: #fffdf7;
+    --gold-deep: #8d6b1f;
+    --gold-accent: #c89b2f;
+    --text-dark: #2b1810;
+    --text-muted: #6b5638;
+    --border-soft: #e8dcbb;
+    --bg-light: #fcf7ed;
+    --shadow-subtle: 0 8px 20px rgba(141, 107, 31, 0.12);
+    --shadow-medium: 0 12px 32px rgba(141, 107, 31, 0.18);
+    --radius: 14px;
+  }
+
+  body {
+    background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold-cream) 100%);
+    color: var(--text-dark);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* ===== HEADER ===== */
+  .checkout-header {
+    background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-soft) 100%);
+    border-bottom: 2px solid rgba(141, 107, 31, 0.25);
+    box-shadow: var(--shadow-subtle);
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checkout-header .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold-deep);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  .checkout-header .logo span {
+    color: var(--gold-accent);
+    font-weight: 800;
+  }
+
+  .checkout-steps {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: rgba(141, 107, 31, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .step.active {
+    color: var(--gold-deep);
+    font-weight: 700;
+  }
+
+  .step-line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(141, 107, 31, 0.3) 0%, transparent 100%);
+  }
+
+  /* ===== LAYOUT ===== */
+  .checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 28px;
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 20px;
+    align-items: start;
+  }
+
+  .checkout-main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .checkout-block {
+    background: var(--gold-cream);
+    border: 1.5px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.3s ease;
+  }
+
+  .checkout-block:hover {
+    box-shadow: var(--shadow-medium);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+
+  .checkout-block h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gold-deep);
+    font-weight: 700;
+  }
+
+  .checkout-block h2 i {
+    color: var(--gold-accent);
+    font-size: 1.4rem;
+  }
+
+  /* ===== CART ITEMS ===== */
+  .cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cart-item {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .cart-item:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
+
+  .cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: var(--bg-light);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .cart-item-details {
+    flex: 1;
+  }
+
+  .cart-item-details h4 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+    font-weight: 600;
+  }
+
+  .cart-item-details span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .cart-item-price {
+    font-weight: 700;
+    color: var(--gold-deep);
+    font-size: 1.1rem;
+  }
+
+  .empty-msg {
+    color: var(--text-muted);
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1rem;
+  }
+
+  .empty-msg a {
+    color: var(--gold-accent);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* ===== FORM STYLING ===== */
+  .form-row {
+    display: flex;
+    gap: 16px;
+  }
+
+  .form-group {
+    flex: 1;
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    letter-spacing: 0.3px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+  }
+
+  .form-group input::placeholder {
+    color: rgba(107, 86, 56, 0.5);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--gold-accent);
+    background: var(--gold-cream);
+    box-shadow: inset 0 0 0 3px rgba(200, 155, 47, 0.1);
+  }
+
+  .shipping-zone-note {
+    background: rgba(212, 175, 55, 0.15);
+    border: 1.5px solid rgba(212, 175, 55, 0.3);
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--gold-deep);
+    font-weight: 600;
+    margin-top: 12px;
+  }
+
+  /* ===== PAYMENT ===== */
+  .payment-options {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .payment-option {
+    flex: 1;
+    border: 1.5px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--bg-light);
+  }
+
+  .payment-option:hover {
+    background: rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+
+  .payment-option:has(input:checked) {
+    border-color: var(--gold-accent);
+    background: rgba(212, 175, 55, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+  }
+
+  .payment-option input {
+    accent-color: var(--gold-deep);
+  }
+
+  .payment-option span {
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .payment-panel {
+    padding: 16px 0;
+  }
+
+  .payment-panel p {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .payment-panel strong {
+    color: var(--gold-deep);
+  }
+
+  .bank-details {
+    background: var(--bg-light);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 14px 0;
+  }
+
+  .bank-details p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+  }
+
+  .copy-btn {
+    border: none;
+    background: none;
+    color: var(--gold-accent);
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    transform: scale(1.15);
+  }
+
+  #receiptUpload {
+    width: 100%;
+    padding: 14px;
+    border: 2px dashed rgba(212, 175, 55, 0.3);
+    border-radius: 10px;
+    background: var(--bg-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  #receiptUpload:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    background: rgba(212, 175, 55, 0.08);
+  }
+
+  #paymentStatusMsg {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-accent) 100%);
+    color: var(--text-dark);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+    font-size: 1rem;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold-accent) 0%, var(--gold-deep) 100%);
+    color: var(--gold-cream);
+    box-shadow: 0 6px 16px rgba(141, 107, 31, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .btn-full {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .order-summary {
+    background: var(--gold-cream);
+    border: 1.5px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow-subtle);
+    position: sticky;
+    top: 20px;
+  }
+
+  .order-summary h3 {
+    margin-bottom: 18px;
+    color: var(--gold-deep);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .summary-row.total {
+    border-top: 2px solid rgba(212, 175, 55, 0.25);
+    margin-top: 12px;
+    padding-top: 14px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold-deep);
+  }
+
+  .secure-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 860px) {
+    .checkout-container {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .checkout-steps span.step span {
+      display: none;
+    }
+
+    .order-summary {
+      position: static;
+      top: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .checkout-header {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .checkout-steps {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .step-line {
+      width: 2px;
+      height: 20px;
+    }
+
+    .checkout-block {
+      padding: 20px;
+    }
+
+    .cart-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .payment-options {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="checkout-header">
+  <a href="../index.html" class="logo">Shop<span>Buddy</span></a>
+  <div class="checkout-steps">
+    <span class="step active" id="stepCart"><i class="fa-solid fa-cart-shopping"></i> Cart</span>
+    <span class="step-line"></span>
+    <span class="step" id="stepShipping"><i class="fa-solid fa-truck"></i> Shipping</span>
+    <span class="step-line"></span>
+    <span class="step" id="stepPayment"><i class="fa-solid fa-credit-card"></i> Payment</span>
+  </div>
+</header>
+
+<main class="checkout-container">
+
+  <div class="checkout-main">
+
+    <!-- ============ CART REVIEW ============ -->
+    <section class="checkout-block" id="cartBlock">
+      <h2><i class="fa-solid fa-cart-shopping"></i> Your Items</h2>
+      <div id="cartItemsList" class="cart-items-list">
+        <!-- populated by checkout.js -->
+      </div>
+      <p id="emptyCartMsg" class="empty-msg" style="display:none;">
+        Your cart is empty. <a href="../shopbuddy.html">Continue shopping</a>
+      </p>
+    </section>
+
+    <!-- ============ SHIPPING INFO ============ -->
+    <section class="checkout-block" id="shippingBlock">
+      <h2><i class="fa-solid fa-truck"></i> Shipping Details</h2>
+      <form id="shippingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" required placeholder="e.g. Chukwuemeka Victor">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required placeholder="080XXXXXXXX">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address</label>
+          <input type="text" id="address" required placeholder="Street, house number, landmark">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="state">State</label>
+            <select id="state" required>
+              <option value="">Select state</option>
+              <option value="lagos">Lagos</option>
+              <option value="rivers">Rivers</option>
+              <option value="abuja">FCT Abuja</option>
+              <option value="ogun">Ogun</option>
+              <option value="oyo">Oyo</option>
+              <option value="kano">Kano</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" required placeholder="e.g. Port Harcourt">
+          </div>
+        </div>
+
+        <div class="shipping-zone-note" id="shippingZoneNote">
+          <i class="fa-solid fa-circle-info"></i> Select a state to see your shipping fee
+        </div>
+      </form>
+    </section>
+
+    <!-- ============ PAYMENT ============ -->
+    <section class="checkout-block" id="paymentBlock">
+      <h2><i class="fa-solid fa-credit-card"></i> Choose Payment Method</h2>
+
+      <div class="payment-options">
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod" value="bank_transfer" checked>
+          <span><i class="fa-solid fa-building-columns"></i> Bank Transfer</span>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="paymentMethod" value="card">
+          <span><i class="fa-solid fa-credit-card"></i> Pay with Card</span>
+        </label>
+      </div>
+
+      <div id="bankTransferPanel" class="payment-panel">
+        <p>Transfer <strong id="btAmount">₦0</strong> to:</p>
+        <div class="bank-details">
+          <p><i class="fa-solid fa-bank"></i> Bank: <strong>Your Bank Name</strong></p>
+          <p><i class="fa-solid fa-hashtag"></i> Account Number: <strong>0123456789</strong> <button type="button" class="copy-btn" onclick="copyAccountNumber()" title="Copy account number"><i class="fa-regular fa-copy"></i></button></p>
+          <p><i class="fa-solid fa-user"></i> Account Name: <strong>ShopBuddy LTD</strong></p>
+        </div>
+
+        <label for="receiptUpload" style="font-weight: 600; display: block; margin-top: 16px; margin-bottom: 8px;">
+          <i class="fa-solid fa-file-upload"></i> Upload payment receipt
+        </label>
+        <input type="file" id="receiptUpload" accept="image/*,.pdf">
+      </div>
+
+      <div id="cardPaymentPanel" class="payment-panel" style="display:none;">
+        <p>Amount to pay: <strong id="cardAmount">₦0</strong></p>
+        <button id="payWithCardBtn" class="btn-primary" type="button">
+          <i class="fa-solid fa-credit-card"></i> Pay with Card
+        </button>
+        <p id="paymentStatusMsg"></p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ ORDER SUMMARY SIDEBAR ============ -->
+  <aside class="order-summary">
+    <h3><i class="fa-solid fa-receipt"></i> Order Summary</h3>
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <span id="summarySubtotal">₦0</span>
+    </div>
+    <div class="summary-row">
+      <span>Shipping</span>
+      <span id="summaryShipping">₦0</span>
+    </div>
+    <div class="summary-row total">
+      <span>Total</span>
+      <span id="summaryTotal">₦0</span>
+    </div>
+
+    <button id="placeOrderBtn" class="btn-primary btn-full" type="button">
+      <i class="fa-solid fa-check"></i> Place Order <i class="fa-solid fa-arrow-right"></i>
+    </button>
+    <p class="secure-note"><i class="fa-solid fa-lock"></i> Your info is safe with us</p>
+  </aside>
+
+</main>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="checkout.js"></script>
+<script src="checkout-payment.js"></script>
+</body>
+</html>

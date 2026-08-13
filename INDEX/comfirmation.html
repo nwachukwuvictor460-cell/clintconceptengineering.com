@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Confirmed — GadgetX</title>
+  <meta name="description" content="Your GadgetX order was placed successfully.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div data-header></div>
+  <div class="container">
+    <div id="confRoot" style="padding:60px 0"></div>
+  </div>
+  <div data-footer></div>
+
+  <script src="/js/products.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+  <script>
+    (function () {
+      const id = new URLSearchParams(location.search).get("id");
+      const orders = JSON.parse(localStorage.getItem("gx_orders") || "[]");
+      const order = orders.find((o) => o.id === id);
+      const root = document.getElementById("confRoot");
+      const fmt = window.GX_PRODUCTS.formatNaira;
+      if (!order) {
+        root.innerHTML = `<div class="empty-state"><h3>Order not found</h3><a class="btn btn--gold" href="/home.html">Go home</a></div>`;
+        return;
+      }
+      const eta = order.customer.state === "Lagos" ? "1-2 business days" : "2-5 business days";
+      root.innerHTML = `
+        <div style="max-width:720px;margin:0 auto;text-align:center">
+          <div style="width:80px;height:80px;border-radius:999px;background:var(--ivory);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;font-size:2.4rem;margin-bottom:16px">
+            <i class="fas fa-check"></i>
+          </div>
+          <h1>Thank you, ${window.escapeHtml(order.customer.name.split(" ")[0])}!</h1>
+          <p class="muted">Your order has been placed. A copy of this receipt was sent to ${window.escapeHtml(order.email)}.</p>
+          <div class="form-card" style="margin-top:24px;text-align:left">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+              <div><div class="muted" style="font-size:0.8rem;text-transform:uppercase">Order number</div><strong>${order.id}</strong></div>
+              <div><div class="muted" style="font-size:0.8rem;text-transform:uppercase">Estimated delivery</div><strong>${eta}</strong></div>
+              <div><div class="muted" style="font-size:0.8rem;text-transform:uppercase">Payment</div><strong>${order.payment === "transfer" ? "Bank Transfer" : "Pay on Delivery"}</strong></div>
+            </div>
+            <hr style="border:0;border-top:1px solid var(--border);margin:16px 0">
+            ${order.items.map((i) => `<div class="summary__row"><span>${window.escapeHtml(i.name)} × ${i.qty}</span><span>${fmt(i.price * i.qty)}</span></div>`).join("")}
+            <div class="summary__row"><span>Subtotal</span><span>${fmt(order.subtotal)}</span></div>
+            <div class="summary__row"><span>Delivery</span><span>${order.delivery === 0 ? "FREE" : fmt(order.delivery)}</span></div>
+            <div class="summary__row summary__row--total"><span>Total</span><strong>${fmt(order.total)}</strong></div>
+          </div>
+          <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="/track.html?id=${order.id}" class="btn"><i class="fas fa-location-dot"></i> Track order</a>
+            <a href="/shop.html" class="btn btn--gold">Continue Shopping</a>
+          </div>
+        </div>`;
+    })();
+  </script>
+</body>
+</html>

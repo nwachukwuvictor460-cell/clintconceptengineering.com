@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login — GadgetX</title>
+  <meta name="description" content="Sign in to your GadgetX account.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+  <div data-header></div>
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h2>Welcome back</h2>
+      <p>Sign in to view your orders and wishlist.</p>
+      <form id="loginForm" novalidate>
+        <div class="form-group"><label>Email</label><input name="email" type="email" required><div class="error">Enter a valid email</div></div>
+        <div class="form-group"><label>Password</label><input name="password" type="password" required minlength="4"><div class="error">Enter your password</div></div>
+        <button class="btn btn--gold btn--block" type="submit">Sign in</button>
+      </form>
+      <div class="foot">New here? <a href="/register.html">Create an account</a></div>
+    </div>
+  </div>
+  <div data-footer></div>
+
+  <script src="../JS/products.js"></script>
+  <script src="../JS/auth.js"></script>
+  <script src="../JS/cart.js"></script>
+  <script src="../main.js"></script>
+  <script src="../JS/chatbot.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const form = e.target;
+      form.querySelectorAll(".form-group").forEach((g) => g.classList.remove("invalid"));
+      const email = fd.get("email"), password = fd.get("password");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.email.closest(".form-group").classList.add("invalid"); return; }
+      if (!password) { form.password.closest(".form-group").classList.add("invalid"); return; }
+      const r = window.Auth.login(email, password);
+      if (!r.ok) return window.toast(r.error, "warn");
+      window.toast("Signed in");
+      setTimeout(() => (location.href = "/account.html"), 400);
+    });
+  </script>
+</body>
+</html>

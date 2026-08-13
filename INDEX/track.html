@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track Order — GadgetX</title>
+  <meta name="description" content="Track the status of your GadgetX order.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div data-header></div>
+  <div class="container">
+    <div class="crumbs"><a href="/home.html">Home</a><span>›</span><span>Track Order</span></div>
+    <h1>Track your order</h1>
+    <form id="trackForm" style="display:flex;gap:8px;max-width:520px;margin-bottom:24px">
+      <input class="form-group" name="id" placeholder="Order number (e.g. GX-12345678)" style="flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:8px" required>
+      <button class="btn btn--gold" type="submit">Track</button>
+    </form>
+    <div id="trackResult"></div>
+  </div>
+  <div style="height:64px"></div>
+  <div data-footer></div>
+
+  <script src="/js/products.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+  <script>
+    const STAGES = ["Pending", "Processing", "Shipped", "Delivered"];
+    function findOrder(id) {
+      return (JSON.parse(localStorage.getItem("gx_orders") || "[]")).find((o) => o.id === id.trim());
+    }
+    function render(order) {
+      const host = document.getElementById("trackResult");
+      if (!order) { host.innerHTML = `<div class="empty-state"><i class="fas fa-magnifying-glass"></i><h3>No order found</h3><p>Double-check the order number.</p></div>`; return; }
+      const idx = STAGES.indexOf(order.status);
+      const fmt = window.GX_PRODUCTS.formatNaira;
+      host.innerHTML = `
+        <div class="form-card" style="max-width:720px">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div><div class="muted" style="font-size:0.8rem;text-transform:uppercase">Order</div><strong>${order.id}</strong></div>
+            <div><div class="muted" style="font-size:0.8rem;text-transform:uppercase">Placed</div><strong>${new Date(order.createdAt).toLocaleString()}</strong></div>
+            <div><div class="muted" style="font-size:0.8rem;text-transform:uppercase">Total</div><strong>${fmt(order.total)}</strong></div>
+          </div>
+          <ul class="timeline">
+            ${STAGES.map((s, i) => `
+              <li class="${i < idx ? "done" : i === idx ? "current" : ""}">
+                <div class="dot">${i < idx ? '<i class="fas fa-check"></i>' : (i + 1)}</div>
+                <div><div class="label">${s}</div><div class="desc">${["Awaiting payment confirmation","We're preparing your order","Out for delivery","Order delivered — enjoy!"][i]}</div></div>
+              </li>`).join("")}
+          </ul>
+          <div class="muted" style="font-size:0.85rem">Shipping to: ${window.escapeHtml(order.customer.address)}, ${window.escapeHtml(order.customer.city)}, ${window.escapeHtml(order.customer.state)}</div>
+        </div>`;
+    }
+    document.getElementById("trackForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      render(findOrder(new FormData(e.target).get("id")));
+    });
+    const q = new URLSearchParams(location.search).get("id");
+    if (q) { document.querySelector('input[name="id"]').value = q; render(findOrder(q)); }
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Cart — GadgetX</title>
+  <meta name="description" content="Review the gadgets in your cart and proceed to checkout.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div data-header></div>
+  <div class="container">
+    <div class="crumbs"><a href="/home.html">Home</a><span>›</span><span>Cart</span></div>
+    <h1 style="margin-bottom:24px">Your Cart</h1>
+    <div id="cartRoot"></div>
+  </div>
+  <div style="height:64px"></div>
+  <div data-footer></div>
+
+  <script src="/js/products.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/chatbot.js"></script>
+  <script>
+    (function render() {
+      const items = window.Cart.read();
+      const root = document.getElementById("cartRoot");
+      const fmt = window.GX_PRODUCTS.formatNaira;
+      if (!items.length) {
+        root.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-shopping-bag"></i>
+            <h3>Your cart is empty</h3>
+            <p>Start shopping to see items here.</p>
+            <a href="/shop.html" class="btn btn--gold">Browse gadgets</a>
+          </div>`;
+        return;
+      }
+      const subtotal = window.Cart.subtotal();
+      const delivery = subtotal > 500000 ? 0 : 3500;
+      const total = subtotal + delivery;
+
+      root.innerHTML = `
+        <div class="cart-layout">
+          <div>
+            ${items.map((it, idx) => {
+              const p = window.GX_PRODUCTS.getProduct(it.id);
+              if (!p) return "";
+              const variantMeta = Object.entries(it.variants || {}).map(([k,v]) => `${k}: ${v}`).join(" · ");
+              return `
+                <div class="cart-item">
+                  <div class="cart-item__image"><i class="fas ${p.icon}"></i></div>
+                  <div>
+                    <a href="/product.html?id=${p.id}" style="color:inherit"><div class="cart-item__name">${window.escapeHtml(p.name)}</div></a>
+                    <div class="cart-item__meta">${window.escapeHtml(variantMeta) || "&nbsp;"}</div>
+                    <div class="cart-item__price">${fmt(p.price)}</div>
+                  </div>
+                  <div class="cart-item__actions">
+                    <div class="qty">
+                      <button data-dec="${idx}">−</button>
+                      <input value="${it.qty}" readonly>
+                      <button data-inc="${idx}">+</button>
+                    </div>
+                    <button class="link-btn" data-remove="${idx}">Remove</button>
+                  </div>
+                </div>`;
+            }).join("")}
+          </div>
+          <aside class="summary">
+            <h3>Order Summary</h3>
+            <div class="summary__row"><span>Subtotal</span><span>${fmt(subtotal)}</span></div>
+            <div class="summary__row"><span>Delivery</span><span>${delivery === 0 ? "FREE" : fmt(delivery)}</span></div>
+            ${subtotal < 500000 ? `<div class="muted" style="font-size:0.8rem">Free delivery on orders over ${fmt(500000)}</div>` : ""}
+            <div class="summary__row summary__row--total"><span>Total</span><strong>${fmt(total)}</strong></div>
+            <a href="/checkout.html" class="btn btn--gold btn--block" style="margin-top:16px">Proceed to Checkout <i class="fas fa-arrow-right"></i></a>
+            <a href="/shop.html" class="btn btn--outline btn--block" style="margin-top:8px">Continue Shopping</a>
+          </aside>
+        </div>`;
+
+      root.querySelectorAll("[data-inc]").forEach((b) => b.addEventListener("click", () => {
+        const i = Number(b.dataset.inc); const it = window.Cart.read()[i];
+        window.Cart.updateQty(i, it.qty + 1); render();
+      }));
+      root.querySelectorAll("[data-dec]").forEach((b) => b.addEventListener("click", () => {
+        const i = Number(b.dataset.dec); const it = window.Cart.read()[i];
+        window.Cart.updateQty(i, it.qty - 1); render();
+      }));
+      root.querySelectorAll("[data-remove]").forEach((b) => b.addEventListener("click", () => {
+        window.Cart.remove(Number(b.dataset.remove)); render();
+      }));
+    })();
+  </script>
+</body>
+</html>
